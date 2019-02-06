@@ -179,8 +179,8 @@ if __name__ == '__main__':
     chans.compile(loss='categorical_crossentropy',optimizer='sgd', metrics=['acc'])
     
     r = os.urandom(4)
-    rand = int(r.encode('hex'),16)
-    #rand = int.from_bytes(r,byteorder='little')
+    #rand = int(r.encode('hex'),16)
+    rand = int.from_bytes(r,byteorder='little')
     #y_seeds = np.load('y_seeds.npy')
     #print(y_seeds.shape)
     #print(y_seeds)
@@ -190,7 +190,7 @@ if __name__ == '__main__':
     #x_seeds = x
     x_seeds, y_seeds, counter = select_seeds_by_class(X_test,Y_test,chans)
     Y_pred = chans.predict(x_seeds)
-    print(counter)
+    #print(counter)
     #np.save('y_pred',Y_pred)
     #print(Y_pred.shape)
     #print(y_seeds.shape)
@@ -218,8 +218,8 @@ if __name__ == '__main__':
     for i in range(len(x_seeds)):
         print("seed: %d"%i)
         print(datetime.datetime.now())
-        for z in range(10):
-            ep = 0.4+(z*0.01)
+        for z in range(21):
+            ep = 0.1+(z*0.01)
             ep_attack = ep*(np.ones((28,28,1)))
             #x_upper = x_nat[i]+ep_attack
             #x_lower = x_nat[i]-ep_attack
