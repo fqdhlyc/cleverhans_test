@@ -147,8 +147,8 @@ def select_seeds_by_class(x,y,model):
                 count[temp]+=1
                 x_seeds.append(x[i])
                 y_seeds.append(y[i])
-    x = np.array(x_seeds)
-    y = np.array(y_seeds)
+    x = np.array(x_seeds[0:50])
+    y = np.array(y_seeds[0:50])
     return x,y,counter
 
 def select_attacked_seeds(x,x_nat,y,model):
@@ -228,7 +228,7 @@ if __name__ == '__main__':
             #val_vec = np.zeros((1000))
             for j in range(100000):
 
-                attack = np.random.uniform(0,ep,size=(28,28,1))
+                attack = np.random.uniform(-ep,ep,size=(28,28,1))
                 result1 = x_seeds[i]+attack
 
                 result1 = np.clip(result1,0,1)
